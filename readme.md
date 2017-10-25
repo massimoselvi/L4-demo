@@ -30,10 +30,20 @@ i.e.:
 		),
 `
 
-####migrate 
+#### migrate the database
 
 `$ php artisan migrate --package=cartalyst/sentry`
 
 then
 
 `$ php artisan migrate`
+
+#### seed the DB with initial demo data
+
+`$ php artisan db:seed`
+
+#### serve it locally
+
+`$ php artisan serve`
+
+open `http://localhost:8000` in the browser 
