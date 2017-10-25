@@ -1,8 +1,8 @@
 <?php namespace App\Models;
 
 use Eloquent;
-use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Auth\UserInterface;
 
 class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterface, RemindableInterface {
 
@@ -25,8 +25,7 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
 	 *
 	 * @return mixed
 	 */
-	public function getAuthIdentifier()
-	{
+	public function getAuthIdentifier() {
 		return $this->getKey();
 	}
 
@@ -35,8 +34,7 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
 	 *
 	 * @return string
 	 */
-	public function getAuthPassword()
-	{
+	public function getAuthPassword() {
 		return $this->password;
 	}
 
@@ -45,9 +43,34 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
 	 *
 	 * @return string
 	 */
-	public function getReminderEmail()
-	{
+	public function getReminderEmail() {
 		return $this->email;
 	}
+	/**
+	 * Get the token value for the "remember me" session.
+	 *
+	 * @return string
+	 */
+	public function getRememberToken() {
+		return $this->attributes['remember_token'];
+	}
 
+	/**
+	 * Set the token value for the "remember me" session.
+	 *
+	 * @param  string  $value
+	 * @return void
+	 */
+	public function setRememberToken($value) {
+		$this->attributes['remember_token'] = $value;
+	}
+
+	/**
+	 * Get the column name for the "remember me" token.
+	 *
+	 * @return string
+	 */
+	public function getRememberTokenName() {
+		return 'remember_token';
+	}
 }
